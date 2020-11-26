@@ -2,7 +2,7 @@ function showQuestion(){
   let temp = document.getElementById('startSec');
   let newHTML = `
   <div class="row justify-content-center">
-    <div class = "text-center">
+    <div class = "text-center answer">
       <h5 class="display-5">What is a correct syntax to output "Hello World" in C#?</h5><br>
       <form class = "text-left">
         <input type="radio" name="1stQ" value="1" id="1st" class="1stQ">
@@ -23,15 +23,16 @@ function showQuestion(){
 }
 
 function checkAnswer(){
-  let temp = document.getElementById('startSec');
+  let temp = document.getElementsByClassName('answer')[0];
   let newHTML ="";
-  if (document.getElementbyId('3rd').checked){
-    alert();
-    temp.innerHTML = "You are correct";
-    alert();
+  if (document.getElementById('3rd').checked){
+     newHTML = "<h3>You are correct!!</h3>";
   }else{
-    alert();
-    temp.innerHTML = "Sorry, you are wrong";
-    alert();
+    newHTML = "<h3>Sorry, you are wrong</h3>";
   }
+  temp.innerHTML = newHTML.concat(`
+    <div class = "py-5">
+      <button type="button" class="btn btn-primary btn-lg" onclick="showQuestion()">Back to Question</button>
+    </div>
+  `);
 }
